@@ -1,0 +1,48 @@
+:root {
+--dark-olive-green: #606c38ff;
+--kombu-green: #283618ff;
+--cornsilk: #fefae0ff;
+--fawn: #dda15eff;
+--liver-dogs: #bc6c25ff;
+
+--main-bg: var(--cornsilk);
+--dark: var(--kombu-green);
+--light: var(--dark-olive-green);
+--accent-dark: var(--liver-dogs);
+--accent-light: var(--fawn);
+
+--gradient-top: linear-gradient(0deg, #606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
+--gradient-right: linear-gradient(90deg, #606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
+--gradient-bottom: linear-gradient(180deg, #606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
+--gradient-left: linear-gradient(270deg, #606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
+--gradient-top-right: linear-gradient(45deg, #606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
+--gradient-bottom-right: linear-gradient(135deg, #606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
+--gradient-top-left: linear-gradient(225deg, #606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
+--gradient-bottom-left: linear-gradient(315deg, #606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
+--gradient-radial: radial-gradient(#606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
+}
+
+body {
+    background-color: var(--main-bg);
+}
+
+#header {
+    background-color: var(--dark);
+}
+
+#brand-text {
+    background-color: var(--light);
+}
+
+#brand-text, #header-items > li > a {
+    border-radius: 10px;
+    color: var(--main-bg);
+}
+
+#header-items > li > a:hover {
+    color: var(--accent-light);
+}
+
+a.disabled {
+    color: var(--light) !important;
+}

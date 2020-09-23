@@ -1,0 +1,25 @@
+{
+  "name": "your-own-chess-club",
+  "version": "1.0.0",
+  "description": "An full-featured, open-source chess web application designed to be hosted locally for chess hobbyists and enthusiasts.",
+  "main": "index.js",
+  "dependencies": {
+    "@chrisoakman/chessboardjs": "^1.0.0",
+    "chess.js": "^0.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JMBeresford/your-own-chess-club.git"
+  },
+  "keywords": [],
+  "author": "JMBeresford",
+  "license": "GPL3",
+  "bugs": {
+    "url": "https://github.com/JMBeresford/your-own-chess-club/issues"
+  },
+  "homepage": "https://github.com/JMBeresford/your-own-chess-club#readme"
+}
