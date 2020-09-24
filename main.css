@@ -23,15 +23,23 @@
 }
 
 body {
-    background-color: var(--main-bg);
+    background-color: var(--light);
 }
 
 #header {
     background-color: var(--dark);
 }
 
+#main-body {
+    background-color: var(--main-bg);
+}
+
+#your-games-widget {
+
+}
+
 #brand-text {
-    background-color: var(--light);
+    background-color: var(--accent-dark);
 }
 
 #brand-text, #header-items > li > a {
@@ -45,4 +53,9 @@ body {
 
 a.disabled {
     color: var(--light) !important;
+}
+
+.hover-overlay {
+    z-index: 100;
+    color: var(--accent-light);
 }
