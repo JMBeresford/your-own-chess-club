@@ -26,16 +26,17 @@ body {
     background-color: var(--light);
 }
 
+hr.rule {
+    background-color: var(--light);
+    opacity: 0.8;
+}
+
 #header {
     background-color: var(--dark);
 }
 
 #main-body {
     background-color: var(--main-bg);
-}
-
-#your-games-widget {
-
 }
 
 #brand-text {
@@ -47,15 +48,57 @@ body {
     color: var(--main-bg);
 }
 
+#header-items > li:hover {
+    background-color: rgba(white, white, white, 0.2);
+}
+
 #header-items > li > a:hover {
     color: var(--accent-light);
+}
+
+h3.sub-section {
+    color: var(--dark);
+    font-weight: bold;
+}
+
+.centering-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 a.disabled {
     color: var(--light) !important;
 }
 
+.game-container {
+    position: relative;
+}
+
 .hover-overlay {
     z-index: 100;
-    color: var(--accent-light);
+    width: 0;
+    height: 100%;
+    padding-left: 100%;
+}
+
+.hover-overlay > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.play-text {
+    color: var(--accent-dark);
+    font-weight: bold;
+}
+
+.quick-play-button {
+    border-color: var(--accent-dark);
+    background-color: var(--accent-dark);
 }

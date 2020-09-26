@@ -49,30 +49,78 @@
     </div>
 
     <!--main body container-->
-    <div class="container" id="main-body">
+    <div id="main-body" class="container">
+
+        <!--Your Games Section-->
         <div id="your-games-widget" class="row py-3">
             <div class="col-md-12 text-center">
-                <h3>Your Games</h3>
+                <h3 class="sub-section">Your Games</h3>
             </div>
-            <div class="view overlay col-md">
-                <div id="testBoard1" class="your-game"></div>
-                <div class="mask flex-center rgba-black-strong hover-overlay"><p>PLAY</p></div>
+            <div class="col game-container">
+                <div class="view overlay">
+                    <div id="testBoard1" class="your-game d-flex justify-content-center"></div>
+                    <div class="mask flex-center rgba-black-strong hover-overlay">
+                        <div class="centering-div">
+                            <button class="btn btn-outline-light play-text">PLAY</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="view overlay col-md">
-                <div id="testBoard2" class="your-game"></div>
-                <div class="mask flex-center rgba-black-strong hover-overlay"><p>PLAY</p></div>
+            <div class="col game-container">
+                <div class="view overlay">
+                    <div id="testBoard2" class="your-game d-flex justify-content-center"></div>
+                    <div class="mask flex-center rgba-black-strong hover-overlay">
+                        <div class="centering-div"><button class="btn btn-outline-light play-text">PLAY</button></div>
+                    </div>
+                </div>
             </div>
-            <div class="view overlay col-md">
-                <div id="testBoard3" class="your-game"></div>
-                <div class="mask flex-center rgba-black-strong hover-overlay"><p>PLAY</p></div>
+            <div class="col game-container">
+                <div class="view overlay">
+                    <div id="testBoard3" class="your-game d-flex justify-content-center"></div>
+                    <div class="mask flex-center rgba-black-strong hover-overlay">
+                        <div class="centering-div"><button class="btn btn-outline-light play-text">PLAY</button></div>
+                    </div>
+                </div>
             </div>
-            <div class="view overlay col-md">
-                <div id="testBoard4" class="your-game"></div>
-                <div class="mask flex-center rgba-black-strong hover-overlay"><p>PLAY</p></div>
+            <div class="col game-container">
+                <div class="view overlay">
+                    <div id="testBoard4" class="your-game d-flex justify-content-center"></div>
+                    <div class="mask flex-center rgba-black-strong hover-overlay">
+                        <div class="centering-div"><button class="btn btn-outline-light play-text">PLAY</button></div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="active-games-widget" class="row py-3">
-            
+
+        <hr class="rule">
+
+        <!--Play Against AI Section-->
+        <div id="quick-play-widget" class="row py-3">
+            <div class="col-md-12 text-center">
+                <h3 class="sub-section">Quick Match</h3>
+            </div>
+            <div class="col-md-3 py-2 text-center">
+                
+                <form action="./www/game.html"><button href="page/game.html" class="btn btn-lg quick-play-button">Easy AI</button></form> 
+            </div>
+            <div class="col-md-3 py-2 text-center">
+                <button class="btn btn-lg quick-play-button">Medium AI</button>
+            </div>
+            <div class="col-md-3 py-2 text-center">
+                <button class="btn btn-lg quick-play-button">Hard AI</button>
+            </div>
+            <div class="col-md-3 py-2 text-center">
+                <button class="btn btn-lg quick-play-button">Human</button>
+            </div>
+        </div>
+
+        <hr class="rule">
+
+        <!--Spectate Section-->
+        <div id="spectate-widget" class="row py-3">
+            <div class="col-md-12 text-center">
+                <h3 class="sub-section">Spectate</h3>
+            </div>
         </div>
     </div>
 
