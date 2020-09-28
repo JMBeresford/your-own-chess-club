@@ -73,3 +73,8 @@ window.setTimeout(makeRandomMove1, 500)
 window.setTimeout(makeRandomMove2, 500)
 window.setTimeout(makeRandomMove3, 500)
 window.setTimeout(makeRandomMove4, 500)
+
+$(window).on('resize', board1.resize)
+$(window).on('resize', board2.resize)
+$(window).on('resize', board3.resize)
+$(window).on('resize', board4.resize)

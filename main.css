@@ -20,6 +20,7 @@
 --gradient-top-left: linear-gradient(225deg, #606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
 --gradient-bottom-left: linear-gradient(315deg, #606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
 --gradient-radial: radial-gradient(#606c38ff, #283618ff, #fefae0ff, #dda15eff, #bc6c25ff);
+--gradient-radial-accent-dark-to-light: radial-gradient(#bc6c25ff, #dda15eff);
 }
 
 body {
@@ -37,6 +38,7 @@ hr.rule {
 
 #main-body {
     background-color: var(--main-bg);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 #brand-text {
@@ -56,7 +58,7 @@ hr.rule {
     color: var(--accent-light);
 }
 
-h3.sub-section {
+.sub-section {
     color: var(--dark);
     font-weight: bold;
 }
@@ -74,6 +76,10 @@ a.disabled {
 
 .game-container {
     position: relative;
+}
+
+.your-game * {
+    border: none;
 }
 
 .hover-overlay {
@@ -101,4 +107,42 @@ a.disabled {
 .quick-play-button {
     border-color: var(--accent-dark);
     background-color: var(--accent-dark);
+}
+
+#active-game-board * {
+    touch-action: auto;
+    border: none;
+}
+
+.active-game-table {
+    border: none;
+}
+
+.active-game-table > thead > tr {
+    border: none;
+}
+
+.active-game-table > tbody > tr {
+    border: none;
+}
+
+.active-game-table > * > tr > th, .active-game-table > * > tr > td {
+    border: none;
+}
+
+.active-game-table > thead {
+    background-color: var(--accent-dark);
+}
+
+.active-game-table > tbody {
+    background-color: var(--accent-light);
+}
+
+#active-game-info-header * {
+    background-color: var(--accent-dark);
+}
+
+#active-game-table-container {
+    height: auto;
+    overflow: hidden;
 }

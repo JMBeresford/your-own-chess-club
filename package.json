@@ -5,11 +5,26 @@
   "main": "index.js",
   "dependencies": {
     "@chrisoakman/chessboardjs": "^1.0.0",
+    "bcrypt": "^5.0.0",
     "chess.js": "^0.11.0",
-    "stockfish": "^10.0.2"
+    "connect-sqlite3": "^0.9.11",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "sqlite3": "^5.0.0",
+    "stockfish": "^10.0.2",
+    "uuid": "^8.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browserify": "^16.5.2",
+    "http-server": "^0.12.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  },
   "scripts": {
+    "devStart": "nodemon server.js",
+    "bundleit": "browserify js/index.js -o bundle.js",
     "test": "tap test/*.js"
   },
   "repository": {
