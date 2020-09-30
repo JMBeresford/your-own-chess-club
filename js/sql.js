@@ -3,8 +3,8 @@ const STARTUP = [
         id INTEGER PRIMARY KEY, \
         username TEXT UNIQUE, \
         password TEXT, \
-        current_games TEXT, /* the ids of current matches */ \
-        match_history TEXT /* the ids of previous matches */ \
+        current_games TEXT DEFAULT '', /* the ids of current matches */ \
+        match_history TEXT DEFAULT ''/* the ids of previous matches */ \
         );",
     "CREATE TABLE IF NOT EXISTS games( \
         id INTEGER PRIMARY KEY, \
@@ -17,8 +17,8 @@ const STARTUP = [
 
 const ADD_USER = "INSERT INTO players(username,password) VALUES(?,?);"
 
-const LOGIN_USER = "SELECT * FROM players WHERE username = ? AND \
-PASSWORD = ?;"
+const LOGIN_USER = "SELECT username, id FROM players \
+WHERE username = ?;"
 
 const FIND_USER = "SELECT * FROM players WHERE username = ?;"
 
