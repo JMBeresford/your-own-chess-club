@@ -68,6 +68,9 @@ const server = express();
 server.use(express.static(__dirname));
 server.use(express.urlencoded({extended: true}));
 server.use(express.json());
+server.engine('html', require('ejs').renderFile);
+server.set('view engine', 'html');
+server.set('views', __dirname);
 server.use(session({
     genid: (req) => {
         return uuid();
@@ -121,7 +124,7 @@ server.get('/game', (req,res) => {
     if (!req.user) {
         return res.redirect('/');
     }
-    res.sendFile(__dirname + '/page/game.html');
+    res.render(__dirname + '/page/game_vs_ai.html', {player: req.user.username});
 })
 
 server.get('/signin', (req,res) => {

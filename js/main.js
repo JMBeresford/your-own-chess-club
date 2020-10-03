@@ -1,3 +1,5 @@
+const Chess = require('chess.js');
+
 var board1 = null
 var game1 = new Chess()
 var board2 = null
