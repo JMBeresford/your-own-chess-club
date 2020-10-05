@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid" id="header">
     <nav class="navbar navbar-expand-md navbar-dark" id="header-nav">
-      <a class="navbar-brand font-weight-bold px-2" id="brand-text" href="/">Volcaus Chess Club</a>
+      <a class="navbar-brand font-weight-bold px-2" id="brand-text" >Volcaus Chess Club</a>
       <!-- Links -->
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -9,36 +9,42 @@
       </button>
 
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <div class="mr-auto">
+        <div v-if="Object.values(this.user).length > 0">
           <ul class="navbar-nav" id="header-items">
             <li class="nav-item">
-              <a class="nav-link" href="/match-history">Match History</a>
+              <a class="nav-link disabled">Match History</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/profile">Profile</a>
+              <a class="nav-link disabled">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/leaderboards">Leaderboards</a>
+              <a class="nav-link disabled">Leaderboards</a>
             </li>
           </ul>
         </div>
-        <div v-if="Object.values(user).length > 0">
+
+        <!-- Sign In/Out divs -->
+        <div v-if="Object.values(user).length > 0" class="ml-auto">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" id="sign-in-text" href="/signout">Sign Out</a>
+              <a @click.prevent="signOut()" class="nav-link" id="sign-in-text">
+                Sign Out
+              </a>
             </li>
           </ul>
         </div>
-        <div v-else>
+        <div v-else class="ml-auto">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/signin">Sign In</a>
+              <a @click.prevent="showSignIn()" class="nav-link">Sign In</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
+              <a class="nav-link">Register</a>
             </li>
           </ul>
         </div>
+
+
       </div>
     </nav>
   </div>
@@ -47,7 +53,24 @@
 <script>
 export default {
   name: 'Header',
-  props: ["user"]
+  props: ["user"],
+  data() {
+    return {
+      signingIn: false,
+      registering: false
+    }
+  },
+  methods: {
+    signOut() {
+      this.$emit('sign-out');
+    },
+    signIn() {
+      this.signingIn = true;
+    }
+  },
+  mounted() {
+    
+  }
 }
 </script>
 
@@ -58,10 +81,16 @@ export default {
 
   #brand-text {
     border-radius: 10px;
-    background-color: var(--accent-dark); 
+    background-color: var(--accent-dark);
   }
 
   .nav-link {
+    border-radius: 10px;
     color: var(--main-bg);
+  }
+  
+  .nav-link:hover {
+    transition: 0.25s ease;
+    background-color: var(--light);
   }
 </style>

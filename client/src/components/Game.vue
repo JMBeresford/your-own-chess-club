@@ -6,18 +6,6 @@ export default {
   extends: chessboard,
   props: ["thisGame"],
   methods: {
-    calcWidth() {
-      var parent = document.getElementById(this.thisGame.id.toString());
-      var toUse = (parent.offsetWidth > parent.offsetHeight) ? parent.offsetHeight : parent.offsetWidth;
-
-      toUse--;
-
-      while (toUse % 8 !== 0 && toUse > 0) {
-        toUse--
-      }
-      console.log(toUse);
-      return (toUse);
-    },
     resizeListener() {
       this.board.redrawAll();
     }
@@ -35,8 +23,8 @@ export default {
 
 <style>
   .cg-board-wrap {
-    min-height: 320px;
-    min-width: 320px;
+    min-height: 250px;
+    min-width: 250px;
     width: 25vw;
     height: 25vw;
   }

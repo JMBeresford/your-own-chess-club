@@ -1,19 +1,22 @@
 <template>
   <div id="app">
-    <Header v-bind:user="user"/>
+    <Header v-bind:user="user" v-on:sign-out="signOut()"/>
     <MyGames v-bind:games="games"/>
+    <Play />
   </div>
 </template>
 
 <script lang="ts">
 import Header from './components/Header.vue'
 import MyGames from './components/MyGames.vue'
+import Play from './components/Play.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    MyGames
+    MyGames,
+    Play
   },
   data() {
     return {
@@ -23,6 +26,11 @@ export default {
         {id:2, white: "james", black: "timothy", toMove: "black", gameOver: true, fen: ""}
       ]
     }
+  },
+  methods: {
+    signOut() {
+      this.user = {};
+    },
   }
 }
 </script>
@@ -54,12 +62,22 @@ export default {
   }
 
   hr.rule {
-      background-color: var(--dark);
-      opacity: 0.8;
+    background-color: var(--dark);
+    opacity: 0.8;
   }
 
   .sub-section {
-      color: var(--dark);
-      font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: var(--dark);
+    font-weight: bold;
+  }
+
+  a:hover {
+    cursor: pointer;
+  }
+
+  a.disabled {
+    color: var(--light) !important;
   }
 </style>
