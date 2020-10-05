@@ -20,18 +20,6 @@ export default {
     },
     resizeListener() {
       this.board.redrawAll();
-      // console.log(e-e)
-      // var parent = document.getElementById(this.thisGame.id.toString());
-      // var containers = parent.getElementsByClassName("cg-board-wrap");
-
-      // var container = containers[0];
-
-      // //console.log(container);
-
-      // container.setAttribute("style", "width: " + this.calcWidth() + "px");
-      // this.board.redrawAll();
-      // //container.style.width = this.calcWidth();
-      // //container.style.height = this.calcWidth();
     }
   },
   mounted() {
@@ -47,12 +35,15 @@ export default {
 
 <style>
   .cg-board-wrap {
+    min-height: 320px;
+    min-width: 320px;
     width: 25vw;
     height: 25vw;
   }
   
   .blue .cg-board-wrap {
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA4MDAgODAwIj4NCjxnIGlkPSJicm93bi1ib2FyZCI+DQo8ZyBpZD0iTGlnaHQiIGZpbGw9IiNkZWUzZTYiPg0KPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI4MDAiLz4NCjwvZz4NCjxnIGlkPSJGcmFtZSIgZmlsbD0ibm9uZSI+DQo8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIvPg0KPC9nPg0KPGcgaWQ9IkRhcmsiIGZpbGw9IiM4Y2EyYWQiPg0KPGcgaWQ9InJheiI+DQo8ZyBpZD0iZHZhIj4NCjxnIGlkPSJ0cmkiPg0KPHJlY3QgeD0iMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIvPg0KPHJlY3QgeD0iMzAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIvPg0KPHJlY3QgeD0iNTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIvPg0KPHJlY3QgeD0iNzAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIvPg0KPC9nPg0KPHVzZSB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTAwLDEwMCkiIHhsaW5rOmhyZWY9IiN0cmkiLz4NCjwvZz4NCjx1c2UgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwyMDApIiB4bGluazpocmVmPSIjZHZhIi8+DQo8L2c+DQo8dXNlIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsNDAwKSIgeGxpbms6aHJlZj0iI3JheiIvPg0KPC9nPg0KPC9nPg0KPC9zdmc+');
+    background-image: url('../assets/chesspieces/board1.png');
+    background-size: 100%;
   }
   .merida .cg-board piece.pawn.white {
     background-image: url('../assets/chesspieces/wikipedia/wP.png')
