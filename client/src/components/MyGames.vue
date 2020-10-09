@@ -2,8 +2,8 @@
   <div id="my-games-widget" class="container">
     <h3 class="sub-section">My Games</h3>
     <div class="row">
-      <div v-bind:id="game.id" v-bind:key="game.id" v-for="game in games" class="d-flex justify-content-center col-md">
-        <Game v-bind:thisGame="game"/>
+      <div v-for="game in getMyGames" :key="game.id" class="d-flex justify-content-center col">
+        <Game />
       </div>
     </div>
     <hr class="rule" />
@@ -12,13 +12,16 @@
 
 <script>
 import Game from './Game.vue'
+import { mapGetters } from 'vuex';
+
 export default {
   name: "MyGames",
   components: {
     Game
   },
-  props:
-    ["games"]
+  computed: {
+    ...mapGetters(['getMyGames']),
+  }
 }
 </script>
 

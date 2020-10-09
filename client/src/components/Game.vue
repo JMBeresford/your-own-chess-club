@@ -1,22 +1,23 @@
 <script lang="ts">
 import { chessboard } from 'vue-chessboard'
+import { mapGetters } from 'vuex';
 
 export default {
   name: "Game",
   extends: chessboard,
-  props: ["thisGame"],
+  props: ['thisGame'], // TODO: read up on vue-chessboard props
   methods: {
     resizeListener() {
       this.board.redrawAll();
     }
   },
-  mounted() {
-    this.board.set({
-      viewOnly: (this.thisGame.toMove === this.orientation)
-    })
+  computed: {
+    ...mapGetters(['getActiveGame']),
   },
   created() {
-    window.addEventListener("resize", this.resizeListener);
+    window.addEventListener("resize", this.resizeListener); 
+  },
+  mounted() {
   }
 }
 </script>

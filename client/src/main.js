@@ -3,10 +3,14 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'vue-chessboard/dist/vue-chessboard.css'
 import App from './App.vue'
+import router from './router'
+import store from './store'
 
 Vue.config.productionTip = false
 
 
 new Vue({
-  render: h => h(App),
+  store,
+  router,
+  render: h => h(App)
 }).$mount('#app')

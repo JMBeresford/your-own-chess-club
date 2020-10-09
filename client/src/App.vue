@@ -1,37 +1,29 @@
 <template>
   <div id="app">
-    <Header v-bind:user="user" v-on:sign-out="signOut()"/>
-    <MyGames v-bind:games="games"/>
-    <Play />
+    <div id="nav">
+      <Header />
+    </div>
+    <router-view/>
   </div>
 </template>
 
-<script lang="ts">
-import Header from './components/Header.vue'
-import MyGames from './components/MyGames.vue'
-import Play from './components/Play.vue'
+<script>
+import Header from './components/Header.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  name: 'App',
   components: {
-    Header,
-    MyGames,
-    Play
-  },
-  data() {
-    return {
-      user: {name: "jeff"},
-      games: [
-        {id: 1, white: "john", black: "jack", toMove: "white", gameOver: false, fen: ""},
-        {id:2, white: "james", black: "timothy", toMove: "black", gameOver: true, fen: ""}
-      ]
-    }
+    Header
   },
   methods: {
-    signOut() {
-      this.user = {};
-    },
-  }
+    ...mapActions(['signIn','checkSignInStatus','queryGames']),
+  },
+  computed: {
+    ...mapGetters(['getPlayerBase','getUser']),
+  },
+  created() {
+    this.checkSignInStatus();
+  },
 }
 </script>
 
