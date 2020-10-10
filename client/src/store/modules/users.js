@@ -42,7 +42,6 @@ const actions = {
   async signIn({commit}, user) {
     await axios.post(API_URL + '/users/signin', user, {withCredentials: true}
     ).then( (res) => {
-      console.log(res);
       commit('setUser',res.data);
     }).catch( (err) => {
       return console.log(err);
@@ -63,7 +62,6 @@ const actions = {
     return false;
   },
   async signOut({commit}) {
-    sessionStorage.clear();
     await axios.get(API_URL + "/users/signout", {withCredentials: true}
     ).then ( (res) => {
       console.log(res);

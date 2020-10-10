@@ -112,8 +112,8 @@ router.get('/games', (req,res) => {
 
 })
 
-router.put('/users/games', (req,res) => {
-  const user = req.body;
+router.put('/games', (req,res) => {
+  const payload = req.body;
 
   let db = new sqlite3.Database('./db/chess-club.db', (err) => {
     if (err) {
@@ -124,7 +124,13 @@ router.put('/users/games', (req,res) => {
     }
   })
 
-  db.run(sql.UPDATE_GAMES, )
+  console.log(payload);
+
+  db.run(sql.UPDATE_GAMES, payload, (err) => {
+    if (err) return console.log(err);
+  }).close()
+
+  return res.sendStatus(204);
 })
 
 module.exports = router;

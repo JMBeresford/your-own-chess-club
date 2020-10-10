@@ -27,7 +27,7 @@
         <div v-if="(getUser.id).length > 0" class="ml-auto">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a @click.prevent="signOut()" class="nav-link" id="sign-out-text">
+              <a @click.prevent="doSignOut()" class="nav-link" id="sign-out-text">
                 Sign Out
               </a>
             </li>
@@ -126,6 +126,10 @@ export default {
       this.passwordConfirmation = "";
       this.password = "";
     },
+    doSignOut() {
+      sessionStorage.clear();
+      this.signOut();
+    }
   },
   computed: {
     ...mapGetters(['getUser']),
@@ -136,6 +140,7 @@ export default {
 <style scoped>
   #header {
     background-color: var(--dark);
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.75);
   }
 
   #brand-text {

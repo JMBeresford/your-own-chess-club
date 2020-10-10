@@ -72,7 +72,7 @@ export default {
     ...mapGetters(['getUser','getOpponents','loggedIn']),
   },
   methods: {
-    ...mapActions(['queryPlayerBase','createNewGame']),
+    ...mapActions(['queryPlayerBase','createNewGame','pushGameState']),
     selectOpponent(opp) {
       this.selOpponent = opp
     },
@@ -80,6 +80,7 @@ export default {
       const coinFlip = Math.floor(Math.random() * 2);
 
       this.createNewGame(this.selOpponent, coinFlip);
+      this.pushGameState();
     }
   },
   created() {

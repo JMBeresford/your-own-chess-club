@@ -26,7 +26,7 @@ const GET_USERS = 'SELECT * FROM players;';
 
 const GET_GAMES = 'SELECT current_games FROM players WHERE username = ?;';
 
-const UPDATE_GAMES = 'UPDATE players SET games = ? WHERE username = ?;'
+const UPDATE_GAMES = 'UPDATE players SET current_games = ? WHERE username = ?;'
 
 module.exports = {
   GET_USERS,

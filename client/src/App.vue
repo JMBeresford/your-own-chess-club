@@ -23,6 +23,7 @@ export default {
   },
   created() {
     this.checkSignInStatus();
+    this.queryGames();
   },
 }
 </script>

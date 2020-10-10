@@ -16,7 +16,7 @@
 
     <div id="active-game-widget" class="row justify text-center">
       <div id="active-game-board" class="d-flex justify-content-center col-md-7 my-3">
-        <Game v-on:onMove="test()" ref="activeGame" v-bind:thisGame="getActiveGame" v-bind:orientation="getActiveGame.orientation"/>
+        <Game v-on:onMove="updateGameState()" ref="activeGame" v-bind:fen="getActiveGame.fen" v-bind:orientation="getActiveGame.orientation"/>
       </div>
       
       <div id="active-game-info" class="d-flex justify-content-center col-md-5 my-3">
@@ -37,8 +37,9 @@
 </template>
 
 <script>
-import Game from '../components/Game.vue'
-import { mapGetters } from 'vuex';
+import Game from '../components/Game.vue';
+import { mapGetters,mapActions } from 'vuex';
+import router from '../router';
 
 export default {
   name: 'ActiveGame',
@@ -51,11 +52,22 @@ export default {
     }
   },
   methods: {
-    test() {
-      console.log(this.$refs['activeGame'].board.getFen());
+    ...mapActions(['pushGameState','updateFen']),
+    updateGameState() {
+      console.log(this.$refs['activeGame'].board)
+      console.log(this.$refs['activeGame'].board.state.fen)
+      this.updateFen(this.$refs['activeGame'].board.state.fen)
+      this.pushGameState();
     },
   },
-  computed: mapGetters(['getUser','getActiveGame']),
+  computed: {
+    ...mapGetters(['getUser','getActiveGame','loggedIn']),
+  },
+  mounted() {
+    if (!this.loggedIn) {
+      router.push('/');
+    }
+  }
 }
 </script>
 
