@@ -16,7 +16,7 @@
 
     <div id="active-game-widget" class="row justify text-center">
       <div id="active-game-board" class="d-flex justify-content-center col-md-7 my-3">
-        <Game v-on:onMove="updateGameState()" ref="activeGame" v-bind:fen="getActiveGame.fen" v-bind:orientation="getActiveGame.orientation"/>
+        <Game v-on:onMove="updateGameState()" v-bind:fen="fen" ref="activeGame"/>
       </div>
       
       <div id="active-game-info" class="d-flex justify-content-center col-md-5 my-3">
@@ -48,20 +48,23 @@ export default {
   },
   data() {
     return {
-
+      fen: "",
     }
   },
   methods: {
     ...mapActions(['pushGameState','updateFen']),
     updateGameState() {
       console.log(this.$refs['activeGame'].board)
-      console.log(this.$refs['activeGame'].board.state.fen)
       this.updateFen(this.$refs['activeGame'].board.state.fen)
       this.pushGameState();
     },
   },
   computed: {
     ...mapGetters(['getUser','getActiveGame','loggedIn']),
+  },
+  created() {
+    this.fen = this.getActiveGame.fen;
+    this.orientation = this.getActiveGame.orientation;
   },
   mounted() {
     if (!this.loggedIn) {

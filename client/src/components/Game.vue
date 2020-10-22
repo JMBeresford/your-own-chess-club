@@ -5,7 +5,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: "Game",
   extends: chessboard,
-  props: ['thisGame'], // TODO: read up on vue-chessboard props
+  props: ['thisFen'], // TODO: read up on vue-chessboard props
   methods: {
     resizeListener() {
       this.board.redrawAll();
@@ -15,7 +15,7 @@ export default {
     ...mapGetters(['getActiveGame']),
   },
   created() {
-    window.addEventListener("resize", this.resizeListener); 
+    window.addEventListener("resize", this.resizeListener);
   },
   mounted() {
   }
