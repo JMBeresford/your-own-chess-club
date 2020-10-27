@@ -1,0 +1,16 @@
+GET http://localhost:5000/ HTTP/1.1
+
+###
+
+POST http://localhost:5000/api/v1/users/register
+Content-Type: application/json
+
+{
+  "username": "ass",
+  "passwordInitial": "ass",
+  "passwordConfirmation": "ass"
+}
+
+###
+
+GET http://localhost:5000/api/v1/users
