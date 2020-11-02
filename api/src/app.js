@@ -10,6 +10,7 @@ const SQLiteStore = require('connect-sqlite3')(session);
 const uuid = require('uuid/v4');
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
+const flash = require('connect-flash');
 
 let db = new sqlite3.Database('./db/chess-club.db', (err) => {
   if (err) return console.error(err.message);
@@ -27,9 +28,9 @@ db.serialize(() => {
 passport.use(new LocalStrategy( async function(username, password, done) {
   let db = new sqlite3.Database('./db/chess-club.db', (err) => {
     if (err) return console.error(err.message);
-    
-    return console.log('Connected to DB successfully.');
   });
+
+  console.log(username + " and " + password);
 
   db.get('SELECT password FROM players WHERE username = ?', username, async function(err, row) {
     if (!row) {
@@ -43,7 +44,10 @@ passport.use(new LocalStrategy( async function(username, password, done) {
           db.close()
           return done(null, false, {message: "Incorrect Credentials"});
         }
-
+        if (err) {
+          console.log(err);
+        }
+        console.log(row);
         db.close();
         return done(null, row);
       });
@@ -83,7 +87,7 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(cors({credentials: true, origin: 'http://192.168.1.149:8080'}));
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.json());
 
 app.use(session({
@@ -97,11 +101,14 @@ app.use(session({
   }),
   secret: process.env.ACCESS_TOKEN_SECRET || 'asspoop',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  httpOnly: false
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(flash());
 
 app.get('/', (req, res) => {
   res.json({

@@ -7,10 +7,16 @@ Content-Type: application/json
 
 {
   "username": "ass",
-  "passwordInitial": "ass",
-  "passwordConfirmation": "ass"
+  "pass1": "ass",
+  "pass2": "ass",
 }
 
 ###
 
-GET http://localhost:5000/api/v1/users
+POST http://localhost:5000/api/v1/users/signin
+Content-Type: application/json
+
+{
+  "username": "ass",
+  "password": "ass"
+}

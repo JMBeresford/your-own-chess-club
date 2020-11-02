@@ -72,15 +72,17 @@ router.get('/signin', (req,res) => {
   if (req.isAuthenticated()) {
     return res.status(201).send(req.user);
   } else {
-    return res.status(200).send('not logged in');
+    return res.sendStatus(401);
   }
 })
 
 router.post('/signin', passport.authenticate('local'), (req, res) => {
-  return res.status(201).send(req.user);
+  
+  return res.sendStatus(200);
 })
 
 router.get('/signout', (req,res) => {
+  req.session.destroy();
   res.clearCookie('chess-cookie');
   res.clearCookie('chess-cookie.sig');
   

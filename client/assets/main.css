@@ -1,0 +1,57 @@
+:root {
+  --dark-olive-green: #606c38ff;
+  --kombu-green: #283618ff;
+  --cornsilk: #fefae0ff;
+  --fawn: #dda15eff;
+  --liver-dogs: #bc6c25ff;
+  --main-bg: var(--cornsilk);
+  --dark: var(--kombu-green);
+  --light: var(--dark-olive-green);
+  --accent-dark: var(--liver-dogs);
+  --accent-light: var(--fawn);
+}
+body {
+  background-color: var(--light);
+}
+.button {
+  background-color: var(--accent-dark);
+  border-color: var(--dark);
+  color: var(--main-bg);
+}
+.button:hover, button:active {
+  background-color: var(--accent-light);
+  border-color: var(--dark);
+  color: var(--dark);
+  box-shadow: none;
+}
+.button-alt {
+  background-color: transparent;
+  border-color: var(--dark);
+}
+.button-alt:hover, button-alt:active, button-alt:active:focus {
+  background-color: rgba(20, 20, 20, 0.3);
+  box-shadow: none;
+}
+hr.rule {
+  background-color: var(--dark);
+  opacity: 0.8;
+}
+.sub-section {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: var(--dark);
+  font-weight: bold;
+}
+a:hover {
+  cursor: pointer;
+}
+.page-leave-active,
+.page-enter-active {
+  transition: opacity 0.5s;
+}
+.page-enter {
+  opacity: 0.5;
+}
+.page-leave-to {
+  opacity: 0.5;
+}
