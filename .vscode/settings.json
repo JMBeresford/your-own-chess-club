@@ -1,0 +1,11 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "test",
+      "database": "${workspaceFolder:your-own-chess-club}/api/db/chess-club.db"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}

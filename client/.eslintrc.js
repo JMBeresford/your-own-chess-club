@@ -2,17 +2,22 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: "babel-eslint",
   },
   extends: [
-    '@nuxtjs',
-    'plugin:nuxt/recommended'
+    "@nuxtjs",
+    "eslint:recommended",
+    "plugin:nuxt/recommended",
+    "plugin:vue/recommended",
+    "plugin:prettier/recommended",
   ],
-  plugins: [
-  ],
+  plugins: ["vue"],
   // add your custom rules here
-  rules: {}
-}
+  rules: {
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/html-self-closing": "off",
+  },
+};
