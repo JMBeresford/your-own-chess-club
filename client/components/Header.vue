@@ -23,7 +23,7 @@
               Search
             </button>
           </b-nav-form>
-          <b-nav-item href="#" @click.prevent="signOut">
+          <b-nav-item href="#" @click.prevent="SignOut">
             Sign Out {{ user.username }}
           </b-nav-item>
         </b-navbar-nav>
@@ -33,23 +33,23 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
 export default {
   name: "Header",
+  middleware: ["auth"],
   data() {
     return {};
   },
   computed: {
     user() {
+      if (!this.$auth.user) {
+        return "";
+      }
       return this.$auth.user;
     },
   },
   methods: {
-    ...mapActions({
-      signOut: "signOut",
-    }),
     SignOut() {
-      this.signOut();
+      this.$auth.logout();
     },
   },
 };

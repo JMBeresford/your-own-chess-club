@@ -46,27 +46,18 @@ export default {
   auth: {
     strategies: {
       local: {
-        cookie: {
-          name: "chess-cookie",
-        },
         endpoints: {
           login: {
-            url: "/users/signin",
+            url: "/public/login",
             method: "post",
-            propertyName: false,
+            propertyName: "token",
           },
-          user: {
-            url: "/users/signin",
-            method: "get",
-            propertyName: false,
-          },
-          logout: {
-            url: "/users/signout",
-            method: "get",
-          },
+          user: false,
+          logout: false,
         },
-        tokenRequired: false,
-        tokenType: false,
+        tokenRequired: true,
+        tokenType: "bearer",
+        autoFetchUser: false,
       },
     },
     rewriteRedirects: false,
@@ -81,8 +72,12 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     credentials: true,
-    baseURL: process.env.API_URL || "http://localhost:5000/api/v1",
+    baseURL: process.env.API_URL || "http://localhost:5991/",
     proxy: false,
+  },
+
+  router: {
+    middleware: ["auth"],
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

@@ -19,7 +19,7 @@
             required
             placeholder="Enter Password"
           />
-          <button class="btn button" @click.prevent="SignIn">Login</button>
+          <button class="btn button" @click.prevent="Login">Login</button>
           <button
             class="btn button-alt"
             @click.prevent="registering = !registering"
@@ -38,19 +38,19 @@
           />
           <b-form-input
             id="passwordReg"
-            v-model="registerData.pass1"
+            v-model="registerData.password"
             type="password"
             required
             placeholder="Enter Password"
           />
           <b-form-input
             id="passwordReg2"
-            v-model="registerData.pass2"
+            v-model="registerData.password2"
             type="password"
             required
             placeholder="Confirm Password"
           />
-          <button class="btn button" @click="Register">Register</button>
+          <button class="btn button" @click.prevent="Register">Register</button>
           <button
             class="btn button-alt"
             @click.prevent="registering = !registering"
@@ -68,13 +68,14 @@
 import { mapActions } from "vuex";
 
 export default {
+  auth: "guest",
   data() {
     return {
       registering: false,
       registerData: {
         username: "",
-        pass1: "",
-        pass2: "",
+        password: "",
+        password2: "",
       },
       loginData: {
         username: "",
@@ -91,8 +92,12 @@ export default {
     Register() {
       this.register(this.registerData);
     },
-    async SignIn() {
-      await this.$auth.loginWith("local", { data: this.loginData });
+    async Login() {
+      await this.$auth
+        .loginWith("local", { data: this.loginData })
+        .then((res) => {
+          this.$auth.setUser(res.data.user);
+        });
     },
   },
 };

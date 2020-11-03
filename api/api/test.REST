@@ -1,0 +1,18 @@
+POST http://localhost:5991/public/register
+Content-Type: application/json
+
+{
+  "username": "jerry",
+  "password": "ass",
+  "password2": "ass"
+}
+
+###
+
+POST http://localhost:5991/public/validate
+Content-Type: application/json
+Authorization: token
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE1MGIwNDYyLTMyNmItNDZlOS04NDhjLTY4MTBiMTUxY2Y5YSIsImlhdCI6MTYwNDM3MzI4NSwiZXhwIjoxNjA0Mzg0MDg1fQ.eYN9JvFfSu8tU8r1b2Ik4B91IQPxRqRkRWbuPKkA6BY"
+}
