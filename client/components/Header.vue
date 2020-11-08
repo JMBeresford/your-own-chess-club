@@ -7,8 +7,18 @@
       <b-navbar-toggle target="nav-collapse" />
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#"> Profile </b-nav-item>
-          <b-nav-item href="#"> Leaderboards </b-nav-item>
+          <b-nav-item>
+            <template>
+              <n-link class="nav-link" :to="'/user/' + this.$auth.user.id">
+                Profile
+              </n-link>
+            </template>
+          </b-nav-item>
+          <b-nav-item>
+            <template>
+              <n-link class="nav-link" :to="'/game/0'"> Leaderboards </n-link>
+            </template>
+          </b-nav-item>
         </b-navbar-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
@@ -23,9 +33,7 @@
               Search
             </button>
           </b-nav-form>
-          <b-nav-item href="#" @click.prevent="SignOut">
-            Sign Out {{ user.username }}
-          </b-nav-item>
+          <b-nav-item href="#" @click.prevent="SignOut"> Sign Out </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -35,7 +43,6 @@
 <script>
 export default {
   name: "Header",
-  middleware: ["auth"],
   data() {
     return {};
   },
@@ -72,5 +79,6 @@ export default {
 }
 .nav-link {
   color: var(--main-bg);
+  padding: 0.2em;
 }
 </style>

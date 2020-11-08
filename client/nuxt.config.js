@@ -41,6 +41,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     "@nuxtjs/auth",
+    "@nuxtjs/toast",
   ],
 
   auth: {
@@ -76,9 +77,7 @@ export default {
     proxy: false,
   },
 
-  router: {
-    middleware: ["auth"],
-  },
+  router: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

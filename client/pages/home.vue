@@ -10,7 +10,10 @@
 
 <script>
 export default {
-  middleware: "auth",
+  middleware: "validate",
+  created() {
+    this.$store.dispatch("queryUsers");
+  },
 };
 </script>
 

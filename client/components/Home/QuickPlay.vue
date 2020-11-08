@@ -21,22 +21,63 @@
           </b-button-group>
         </b-col>
         <b-col cols="6" class="py-2">
-          <button
-            data-toggle="modal"
-            data-target="#versus-modal"
-            class="btn button quick-play-button"
-          >
+          <button v-b-modal.versus-modal class="btn button quick-play-button">
             Human
           </button>
         </b-col>
       </b-row>
     </div>
+    <b-modal
+      id="versus-modal"
+      title="Challenge a Player"
+      ok-only
+      ok-title="Challenge"
+    >
+      <b-list-group>
+        <b-list-group-item
+          v-for="opponent in getOpponents()"
+          :key="opponent.id"
+          :class="{ selected: opponent.username === selOpponent.username, b }"
+          @click="selectOpponent(opponent)"
+        >
+          {{ opponent.username }}
+        </b-list-group-item>
+      </b-list-group>
+      <div slot="modal-footer">
+        <button class="btn button" :click="challenge()">Challenge</button>
+      </div>
+    </b-modal>
   </b-container>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "QuickPlay",
+  data() {
+    return {
+      selOpponent: "",
+    };
+  },
+  computed: {
+    ...mapGetters({
+      getUsers: "getUsers",
+    }),
+  },
+  methods: {
+    getOpponents() {
+      const users = this.getUsers;
+      const opponents = users.filter((user) => user.id !== this.$auth.user.id);
+
+      return opponents;
+    },
+    selectOpponent(opp) {
+      this.selOpponent = opp;
+    },
+    challenge() {
+      console.log("challenged");
+    },
+  },
 };
 </script>
 
@@ -77,7 +118,7 @@ export default {
 }
 .list-group-item:hover {
   outline: none;
-  border: var(--dark) solid 1px;
+  border: var(--dark) solid 0.5px;
 }
 .modal-body {
   height: 50vh;

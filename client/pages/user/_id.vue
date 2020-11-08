@@ -1,14 +1,14 @@
 <template>
-  <div></div>
+  <b-container id="profile" fluid>
+    <Header />
+    <b-row>
+      <h3>{{ this.$auth.user.username }}</h3>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
-export default {
-  validate({ params }) {
-    // Must be a #, and an existing id
-    return /^\d+$/.test(params.id);
-  },
-};
+export default {};
 </script>
 
 <style></style>

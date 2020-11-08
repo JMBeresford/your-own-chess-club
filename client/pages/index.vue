@@ -89,14 +89,31 @@ export default {
       register: "register",
       signIn: "signIn",
     }),
-    Register() {
-      this.register(this.registerData);
+    async Register() {
+      await this.register(this.registerData).then((res) => {
+        console.log(res);
+        if (res === 200) {
+          this.registering = false;
+        }
+      });
     },
     async Login() {
+      this.$toast.show("Logging in...", { singleton: true, duration: 3000 });
       await this.$auth
         .loginWith("local", { data: this.loginData })
         .then((res) => {
           this.$auth.setUser(res.data.user);
+          return this.$toast.success("Successfully Logged In", {
+            singleton: true,
+            duration: 5000,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          return this.$toast.error("Invalid Credentials", {
+            singleton: true,
+            duration: 5000,
+          });
         });
     },
   },

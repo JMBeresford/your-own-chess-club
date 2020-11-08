@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
       const scheme = parts[0];
       const credentials = parts[1];
 
-      if (/^Bearer$/.test(scheme)) {
+      if (/^bearer$/.test(scheme)) {
         tokenToVerify = credentials;
       } else {
         return res.status(401).json({ msg: 'Format for Authorization: Bearer [token]' });

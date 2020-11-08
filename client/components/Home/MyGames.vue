@@ -74,9 +74,6 @@ export default {
   padding-top: 13px;
   padding-bottom: 3px;
 }
-.games-container {
-  min-height: 30vh;
-}
 .game-button {
   background-color: var(--accent-dark);
   padding-top: 1em;
