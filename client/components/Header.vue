@@ -8,16 +8,14 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item>
-            <template>
-              <n-link class="nav-link" :to="'/user/' + this.$auth.user.id">
-                Profile
-              </n-link>
-            </template>
+            <b-nav-link @click="goToProfile($auth.user.id)">
+              Profile
+            </b-nav-link>
           </b-nav-item>
-          <b-nav-item>
-            <template>
-              <n-link class="nav-link" :to="'/game/0'"> Leaderboards </n-link>
-            </template>
+          <b-nav-item disabled>
+            <b-nav-link @click="$router.push('/leaderboards')">
+              Leaderboards
+            </b-nav-link>
           </b-nav-item>
         </b-navbar-nav>
         <!-- Right aligned nav items -->
@@ -58,6 +56,9 @@ export default {
     SignOut() {
       this.$auth.logout();
     },
+    goToProfile(id) {
+      this.$router.push("/user/" + id);
+    },
   },
 };
 </script>
@@ -67,6 +68,7 @@ export default {
   background-color: var(--dark);
   height: auto;
   align-items: center;
+  padding: 0 1em;
 }
 #brand {
   padding: 0.25em 1em;

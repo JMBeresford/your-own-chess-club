@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const authService = require('../services/auth.service');
 const bcryptService = require('../services/bcrypt.service');
+const jwtDecode = require('jwt-decode');
 
 const UserController = () => {
   const register = async (req, res) => {
@@ -82,12 +83,32 @@ const UserController = () => {
     }
   };
 
+  const getUser = async (req, res) => {
+    try {
+      if (req.header('Authorization')) {
+        const token = req.header('Authorization').split(' ')[1];
+        const { id } = jwtDecode(token);
+
+        const user = await User.findOne({
+          where: { id },
+        });
+
+        return res.status(200).json({ user: user.dataValues });
+      }
+      // const user = await User.findOne()
+      return res.status(500).json({ msg: 'Internal server error' });
+    } catch (e) {
+      return console.log(e);
+    }
+  };
+
 
   return {
     register,
     login,
     validate,
     getAll,
+    getUser,
   };
 };
 
