@@ -68,7 +68,11 @@
 import { mapActions } from "vuex";
 
 export default {
-  auth: "guest",
+  middleware({ store, redirect }) {
+    if (store.state.auth.loggedIn) {
+      redirect("/home");
+    }
+  },
   data() {
     return {
       registering: false,

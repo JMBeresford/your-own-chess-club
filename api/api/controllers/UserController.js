@@ -93,6 +93,10 @@ const UserController = () => {
           where: { id },
         });
 
+        if (!user) {
+          return res.status(400).json({ msg: 'User does not exist.' });
+        }
+
         return res.status(200).json({ user: user.dataValues });
       }
       // const user = await User.findOne()

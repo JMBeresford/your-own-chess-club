@@ -37,7 +37,7 @@
         <b-list-group-item
           v-for="opponent in getOpponents()"
           :key="opponent.id"
-          :class="{ selected: opponent.username === selOpponent.username, b }"
+          :class="{ selected: opponent.username === selOpponent.username }"
           @click="selectOpponent(opponent)"
         >
           {{ opponent.username }}

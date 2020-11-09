@@ -11,7 +11,7 @@
 <script>
 export default {
   middleware: "validate",
-  created() {
+  mounted() {
     this.$store.dispatch("queryUsers");
   },
 };

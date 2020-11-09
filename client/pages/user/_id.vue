@@ -8,13 +8,16 @@
         <h3 class="sub-section">{{ this.$auth.user.username }}</h3>
       </b-row>
       <b-row id="tabs">
-        <b-tabs id="tabs-content" content-class="mt=3" fill>
+        <b-tabs id="tabs-content" content-class="mt-3" fill>
           <b-tab title="Overview">
             <b-card-group deck>
-              <b-card title="Playing Since">
+              <b-card header="Playing Since" align="center">
                 <b-card-text>
-                  {{ getUserById(id).createdAt }}
+                  {{ $moment(getUserById(id).createdAt).format("MMM Do YYYY") }}
                 </b-card-text>
+              </b-card>
+              <b-card header="Current Elo" align="center">
+                <b-card-text> > 9000 </b-card-text>
               </b-card>
             </b-card-group>
           </b-tab>
@@ -78,8 +81,11 @@ export default {
   border-left-color: var(--accent-light);
 }
 
-.tab-pane {
-  width: 100%;
-  height: 40vh;
+.card {
+  background-color: transparent;
+}
+
+.card-header {
+  background-color: rgba(0, 0, 0, 0.095);
 }
 </style>

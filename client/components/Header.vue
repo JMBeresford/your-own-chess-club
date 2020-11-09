@@ -2,20 +2,16 @@
   <b-container id="header" fluid>
     <b-navbar id="nav" toggleable="lg" type="dark">
       <b-navbar-brand>
-        <n-link id="brand" class="btn button" to="/home"> VCC </n-link>
+        <n-link id="brand" class="btn button" to="/home">
+          Volcaus Chess Club
+        </n-link>
       </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse" />
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item>
-            <b-nav-link @click="goToProfile($auth.user.id)">
-              Profile
-            </b-nav-link>
-          </b-nav-item>
-          <b-nav-item disabled>
-            <b-nav-link @click="$router.push('/leaderboards')">
-              Leaderboards
-            </b-nav-link>
+          <b-nav-item @click="goToProfile($auth.user.id)"> Profile </b-nav-item>
+          <b-nav-item @click="$router.push('/leaderboards')">
+            Leaderboards
           </b-nav-item>
         </b-navbar-nav>
         <!-- Right aligned nav items -->
@@ -31,7 +27,7 @@
               Search
             </button>
           </b-nav-form>
-          <b-nav-item href="#" @click.prevent="SignOut"> Sign Out </b-nav-item>
+          <b-nav-item @click.prevent="SignOut"> Sign Out </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
