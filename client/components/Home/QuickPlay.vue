@@ -44,7 +44,9 @@
         </b-list-group-item>
       </b-list-group>
       <div slot="modal-footer">
-        <button class="btn button" :click="challenge()">Challenge</button>
+        <button class="btn button" @click.prevent="challenge()">
+          Challenge
+        </button>
       </div>
     </b-modal>
   </b-container>
@@ -74,8 +76,18 @@ export default {
     selectOpponent(opp) {
       this.selOpponent = opp;
     },
-    challenge() {
-      console.log("challenged");
+    async challenge() {
+      const coinFlip = Math.floor(Math.random() * 2);
+
+      const playerWhite = coinFlip ? this.selOpponent : this.$auth.user;
+      const playerBlack = coinFlip ? this.$auth.user : this.selOpponent;
+
+      console.log(playerBlack.username + " vs " + playerWhite.username);
+
+      return await this.$store.dispatch("games/createGame", {
+        playerWhite,
+        playerBlack,
+      });
     },
   },
 };

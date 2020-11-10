@@ -24,12 +24,17 @@
     </b-carousel> -->
     <div class="games-container">
       <n-link
-        v-for="game in getMyGames"
+        v-for="game in getGames"
         :key="game.id"
-        class="game-button btn button"
+        class="game-button btn button m-1"
         :to="'/game/' + game.id"
       >
-        VS {{ game.opponent }}
+        VS
+        {{
+          game.playerWhite === $auth.user.username
+            ? game.playerBlack
+            : game.playerWhite
+        }}
         <!-- {{
           game.playerWhite !== getUser.username
             ? game.playerWhite
@@ -43,19 +48,18 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "MyGames",
   data() {
     return {
       slide: 0,
-      getMyGames: [
-        {
-          id: 0,
-          opponent: "Sam",
-          fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-        },
-      ],
     };
+  },
+  computed: {
+    ...mapGetters({
+      getGames: "games/getGames",
+    }),
   },
   methods: {
     slideStart() {

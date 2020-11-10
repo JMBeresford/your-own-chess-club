@@ -19,7 +19,7 @@ const Game = sequelize.define('Game', {
   },
   fens: {
     type: Sequelize.TEXT,
-    defaultValue: '{["rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",]}',
+    defaultValue: '["rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"]',
   },
   gameOver: {
     type: Sequelize.BOOLEAN,

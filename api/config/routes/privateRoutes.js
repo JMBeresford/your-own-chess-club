@@ -2,8 +2,9 @@ const privateRoutes = {
   'GET /users': 'UserController.getAll',
   'GET /games': 'GameController.getAll',
   'GET /user': 'UserController.getUser',
-  'POST /user/games': 'GameController.getUserGames',
+  'GET /user/games': 'GameController.getUserGames',
   'PUT /games': 'GameController.updateGame',
+  'POST /game': 'GameController.createGame',
 };
 
 module.exports = privateRoutes;

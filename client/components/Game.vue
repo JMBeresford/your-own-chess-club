@@ -1,8 +1,12 @@
 <script>
-import { chessboard } from "vue-chessboard";
 export default {
   name: "Game",
-  extends: chessboard,
+  components: {
+    // eslint-disable-next-line no-undef
+    Chessboard,
+  },
+  // eslint-disable-next-line no-undef
+  extends: Chessboard,
   created() {
     // eslint-disable-next-line nuxt/no-globals-in-created
     window.addEventListener("resize", this.resizeListener);

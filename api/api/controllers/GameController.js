@@ -1,16 +1,17 @@
 const Game = require('../models/Game');
+const { Op } = require('sequelize');
 
 const GameController = () => {
-  const create = async (req, res) => {
+  const createGame = async (req, res) => {
     const { body } = req;
 
     try {
-      const game = await Game.build({
-        playerWhite: body.playerWhite,
-        playerBlack: body.playerBlack,
+      const game = await Game.create({
+        playerWhite: body.playerWhite.username,
+        playerBlack: body.playerBlack.username,
       });
 
-      return res.status(200).json({ game });
+      return res.status(201).json({ game });
     } catch (err) {
       console.log(err);
 
@@ -43,10 +44,14 @@ const GameController = () => {
   };
 
   const getUserGames = async (req, res) => {
-    const { id } = req.body;
+    const { username } = req.query;
 
     try {
-      const games = await Game.findAll({ where: { id } });
+      const games = await Game.findAll({
+        where: {
+          [Op.or]: [{ playerWhite: username }, { playerBlack: username }],
+        },
+      });
 
       if (!games) {
         return res.status(400).json({ msg: 'User has no games' });
@@ -73,7 +78,7 @@ const GameController = () => {
   };
 
   return {
-    create,
+    createGame,
     updateGame,
     getUserGames,
     getAll,
